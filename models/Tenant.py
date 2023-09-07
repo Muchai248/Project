@@ -18,7 +18,6 @@ def __init__(self, first_name, last_name,house_id):
         self.house_id=house_id
         
 
-
 def houses(self):
       return self.houses
 
