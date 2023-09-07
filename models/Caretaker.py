@@ -1,29 +1,33 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from .base import Base
+from .Tenant import Tenant
 
 
 class Caretaker(Base):
     __tablename__ = 'caretakers'
     id = Column(Integer, primary_key=True)
-    first_name = Column(String)
-    tenant_id= Column(Integer, ForeignKey("tenants.id"))
+    owner_name = Column(String)
+    # tenant_id= Column(Integer, ForeignKey("tenants.id"))
     house_id = Column(Integer, ForeignKey("houses.id"))
-    tenant = relationship("tenant", back_populates="caretaker")
-    house = relationship("house", back_populates="caretaker")
+    house = relationship("House", back_populates="caretaker")
+  
 
 
-    def __init__(self,owner_name, tenant, house):
+    def __init__(self,owner_name,house_id):
         self.owner_name = owner_name
-        self.tenant = tenant
-        self.house = house
+        self.house_id = house_id
+    
 
-
-    def tenant_instance(self):
-        return self.tenant
+    # def add_tenant(self):
+    #     self.tenant = Tenant(self.first_name)
+    #     self.tenant.add_house(self.house)
+    #     self.house.add_caretaker(self.tenant)
+    #     return self.tenant
     
     def house_instance(self):
         return self.house
+    
 
 
     
