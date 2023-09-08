@@ -28,9 +28,9 @@ house1 =session.query(House). filter_by(house_number="B1").first()
 
 #     house1.add_tenants(session=session)
 
-parser = argparse.ArgumentParser(description="Simple To-Do List Manager")
-parser.add_argument("-a", "--add", help="Add a task to the to-do list")
-parser.add_argument("-l", "--list", action="store_true", help="List all tasks")
+parser = argparse.ArgumentParser(description="Simple tenant List Manager")
+parser.add_argument("-u", "--add", help="Add a tenant to the tenant list")
+parser.add_argument("-l", "--list", action="store_true", help="List all tenants")
 args = parser.parse_args()
 
 
@@ -39,10 +39,8 @@ if args.add:
     house1.add_tenants(args.add)
 elif args.list:
     print(house1.house_number())
-elif args.add:
-    print(house1.add_caretaker(args.remove))
 else: 
-    print("No valid command issued to our CLI app.")
+    print("No valid command issued.")
 
 
 # caretaker1 = session.query(Caretaker). filter_by(owner_name="Obare").first()
