@@ -35,4 +35,13 @@ class House(Base):
        session.add(caretaker)
        session.commit()
 
+   #  def remove_tenants(self, index):
+   #      if 1 <= index <= len(self.house_number):
+   #          removed_tenants = self.house_number.pop(index - 1)
+   #          return f"Removed tenants '{removed_tenants}'."
+   #      else:
+   #          return "Invalid house index."
+        
+
+
 

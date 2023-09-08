@@ -18,20 +18,21 @@ Base.metadata.create_all(bind=engine)
 #     tenant1=Tenant(first_name="April", last_name="Wanja",house_id=1)
 
 house1 =session.query(House). filter_by(house_number="B1").first()
-#  if not house1:
-#     house1=House(house_number="B1")
-#     session.add(house1)
-#     session.commit()
-#     house1.add_caretaker(session=session)
-#     print(house1.house_number)
-    
-#     # print(house1.add_caretaker)
 
-#     house1.add_tenants(session=session)
+if not house1:
+    house1=House(house_number="B1")
+    session.add(house1)
+    session.commit()
+    # house1.add_caretaker(session=session)
+    # print(house1.house_number)
+    
+    # print(house1.add_caretaker)
+
+    # house1.add_tenants(session=session)
 
 parser = argparse.ArgumentParser(description="Simple tenant List Manager")
 parser.add_argument("-u", "--add", help="Add a tenant to the tenant list")
-parser.add_argument("-l", "--list", action="store_true", help="List all tenants")
+parser.add_argument("-l", "--list", action="store_true", help="Add list caretaker")
 args = parser.parse_args()
 
 
