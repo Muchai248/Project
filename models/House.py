@@ -23,25 +23,76 @@ class House(Base):
     
 
     def add_tenants(self,session):
-       tenant=Tenant(first_name="April",last_name="Wanja", house_id=self.id)
+       first_name= input("Enter firstname: " )
+       last_name=input("Enter lastname: ")
+       tenant=Tenant(first_name=first_name,last_name=last_name, house_id=self.id)
        self.tenant.append(tenant)
        session.add(tenant)
        session.commit()
 
 
     def add_caretaker(self,session):
-       caretaker=Caretaker(owner_name="Obare",house_id=self.id)
+       owner_name=input("Enter name: ")
+       caretaker=Caretaker(owner_name=owner_name,house_id=self.id)
        self.caretaker.append(caretaker)
        session.add(caretaker)
        session.commit()
 
-   #  def remove_tenants(self, index):
-   #      if 1 <= index <= len(self.house_number):
-   #          removed_tenants = self.house_number.pop(index - 1)
-   #          return f"Removed tenants '{removed_tenants}'."
-   #      else:
-   #          return "Invalid house index."
-        
+    def delete_tenant(self,session):
+        id=int(input("Enter id: "))
+        for tenant in self.tenant:
+            if tenant.id==id:
+              session.delete(tenant)
+              session.commit()
 
+    def list_tenants(self):
+       for tenant in self.tenant:
+           print(tenant.first_name,tenant.last_name)
+     
+    def list_caretaker(self):
+       for caretaker in self.caretaker:
+           print(caretaker.owner_name)
+
+    def list_house(self,session):
+      houses=session.query(House)
+      for house in houses:
+          print(house.house_number)
+
+       
+
+     
+
+
+    def menu(self,session):
+     while True:
+      print("1.add tenant")
+      print("2.add caretaker")
+      print("3.list tenant")
+      print("4.list house")
+      print("5.list caretaker")
+      print("6.delete tenant")
+      print("7.exit")
+      choice=int(input("Enter choice:"))
+      if choice==1:
+           self.add_tenants(session=session)
+      elif choice==2:
+           self.add_caretaker(session=session)
+      elif choice==3:
+           self.list_tenants()
+      elif choice==4:
+           self.list_house(session=session)
+      elif choice==5:
+           self.list_caretaker()
+      elif choice==6:
+           self.delete_tenant(session=session)
+      elif choice==7:
+          break
+      
+      else:
+          print("Invalid choice")
+      
+
+
+         
 
 

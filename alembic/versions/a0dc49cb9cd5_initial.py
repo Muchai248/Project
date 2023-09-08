@@ -30,7 +30,7 @@ def upgrade() -> None:
     op.create_table(
         'houses',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('house_number', sa.Integer(), nullable=False),
+        sa.Column('house_number', sa.String(), nullable=False),
         sa.PrimaryKeyConstraint("id")
     )
     op.create_table(
