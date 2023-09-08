@@ -1,3 +1,4 @@
+from audioop import add
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models.Caretaker import Caretaker
@@ -36,9 +37,9 @@ args = parser.parse_args()
 
 #  test cases.
 if args.add:
-    house1.add_tenants(args.add)
+    house1.add_tenants(session=session)
 elif args.list:
-    print(house1.house_number())
+    print(house1.add_caretaker(session=session))
 else: 
     print("No valid command issued.")
 
@@ -51,6 +52,7 @@ else:
 #     session.add(tenant1)
 if house1 not in session:
    session.add(house1)
+   session.commit()
 # # if caretaker1 not in session:
 # #     session.add(caretaker1)
 #     session.commit()
