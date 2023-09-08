@@ -33,7 +33,6 @@ class House(Base):
        caretaker=Caretaker(owner_name="Obare",house_id=self.id)
        self.caretaker.append(caretaker)
        session.add(caretaker)
-
        session.commit()
 
 
