@@ -54,10 +54,6 @@ results()
 
 
 
-
-
-
-
 # caretaker1 = session.query(Caretaker). filter_by(owner_name="Obare").first()
 # if not caretaker1:
 #     caretaker1=Caretaker(owner_name="Obare",house_id=1)

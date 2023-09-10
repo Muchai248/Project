@@ -58,11 +58,6 @@ class House(Base):
       for house in houses:
           print(house.house_number)
 
-       
-
-     
-
-
     def menu(self,session):
      while True:
       print("1.add tenant")
