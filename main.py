@@ -1,4 +1,4 @@
-from tabulate import tabulate
+
 from sqlalchemy import create_engine, true
 from sqlalchemy.orm import sessionmaker
 from models.Caretaker import Caretaker
@@ -40,7 +40,7 @@ def results():
     print("1.view menu")
     print("2.add house")
     print("3.exit")
-    choice=int(input("Enter choice:"))
+    choice=int(input("Enter choice: "))
     if choice==1:
       house1()
     elif choice==2:
