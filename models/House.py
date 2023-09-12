@@ -45,6 +45,18 @@ class House(Base):
               session.delete(tenant)
               session.commit()
 
+    def update_tenant(self,session):
+        house_number=input("Enter House no. : ")
+        for tenant in self.tenant:
+            if tenant.house_number==house_number:
+              first_name=input("Enter firstname: ")
+              last_name=input("Enter lastname: ")
+              tenant.first_name=first_name
+              tenant.last_name=last_name
+              session.update(tenant)
+              session.commit()
+
+
     def list_tenants(self):
        for tenant in self.tenant:
            print(tenant.first_name,tenant.last_name)
@@ -66,7 +78,8 @@ class House(Base):
       print("4.list house")
       print("5.list caretaker")
       print("6.delete tenant")
-      print("7.exit")
+      print("7.update tenant")
+      print("8.exit")
       choice=int(input("Enter choice:"))
       if choice==1:
            self.add_tenants(session=session)
@@ -81,8 +94,9 @@ class House(Base):
       elif choice==6:
            self.delete_tenant(session=session)
       elif choice==7:
+          self.update_tenant(session=session)
+      elif choice==8:
           break
-      
       else:
           print("Invalid choice")
       
